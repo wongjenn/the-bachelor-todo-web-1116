@@ -44,14 +44,10 @@ end
 def get_average_age_for_season(data, season)
   total_age = 0.00
   count = 0
-  data.each do |seasons, contestants|
-    if seasons = season
-      contestants.each do |contestant|
-        total_age += contestant["age"].to_f
-        count += 1
-      end
-    end
+  data[season].each do |contestant|
+    total_age += contestant["age"].to_f
+    count += 1
   end
 
-  season == "season 11" ? (total_age/count).ceil : total_age.to_i/count
+  (total_age/count).round(0)
 end
